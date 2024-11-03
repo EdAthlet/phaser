@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/phaser@3.60.0/dist/phaser-arcade-physics.min.js"></script>
+</head>
+<body>
+
+    <script>
+      class MainScene extends Phaser.Scene {
+
+          constructor() {
+              super({ key: "MainScene" }); // This "key" is the unique identifier for the scene
+          }
+
+          preload() {
+              this.load.image("earth", "https://cdn.phaser.io/sandbox/square-earth.png");
+          }
+
+          create() {
+              this.earth = this.add.image(400, 350, "earth");
+          }
+
+          update(time) {
+              this.earth.rotation += 0.005;
+              this.earth.y = this.earth.y + Math.sin(time / 1000 * 2);
+          }
+
+      }
+
+      const game = new Phaser.Game({
+          type: Phaser.AUTO,
+          width: 800,
+          height: 800,
+          backgroundColor: '#111111',
+          scale: {
+              mode: Phaser.Scale.FIT,
+              autoCenter: Phaser.Scale.CENTER_BOTH
+          },
+          scene: [ MainScene ] // Add MainScene to the scene array
+      });
+ 
+    </script>
+    
+</body>
+</html>
