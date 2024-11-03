@@ -13,11 +13,13 @@
           }
 
           preload() {
-              this.load.image("earth", "https://cdn.phaser.io/sandbox/square-earth.png");
+              this.load.image("earth", "assets/square-earth.png".setScale(2)); // Load the locally saved image
           }
 
           create() {
-              this.earth = this.add.image(400, 350, "earth");
+              this.earth = this.add.image(400, 350, "earth");  // Adjust the scale to make the earth larger
+              this.cameras.main.zoom = 1.5;  // Increase the zoom level to make objects appear larger
+
           }
 
           update(time) {
